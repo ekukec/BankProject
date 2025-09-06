@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 @Component
 public class TransactionService {
@@ -24,9 +25,13 @@ public class TransactionService {
         return transactions;
     }
 
-    public Transaction create(BigDecimal amount, String reference) {
-        Transaction transaction = new Transaction(amount, ZonedDateTime.now(), reference, bankSlogan);
+    public Transaction create(BigDecimal amount, String reference, String receivingUserId) {
+        Transaction transaction = new Transaction(amount, ZonedDateTime.now(), reference, bankSlogan, receivingUserId);
         transactions.add(transaction);
         return transaction;
+    }
+
+    public List<Transaction> findByUserId(String userId) {
+        return transactions.stream().filter(transaction -> transaction.getId().equals(userId)).collect(Collectors.toList());
     }
 }
