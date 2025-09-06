@@ -1,15 +1,17 @@
-package com.emanuelkukec.mybank.dto;
+package com.emanuelkukec.mybank.web.forms;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
-public class TransactionDto {
-    @Positive
+public class TransactionForm {
+    @NotNull
+    @DecimalMin("0.01")
+    @Max(100)
     private BigDecimal amount;
 
     @NotBlank
+    @Size(min = 1, max = 25)
     private String reference;
 
     @NotBlank
