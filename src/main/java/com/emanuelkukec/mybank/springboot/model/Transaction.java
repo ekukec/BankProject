@@ -1,4 +1,4 @@
-package com.emanuelkukec.mybank.model;
+package com.emanuelkukec.mybank.springboot.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

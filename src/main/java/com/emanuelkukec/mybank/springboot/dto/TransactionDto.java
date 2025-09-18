@@ -1,17 +1,15 @@
-package com.emanuelkukec.mybank.web.forms;
+package com.emanuelkukec.mybank.springboot.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public class TransactionForm {
-    @NotNull
-    @DecimalMin("0.01")
-    @Max(100)
+public class TransactionDto {
+    @Positive
     private BigDecimal amount;
 
     @NotBlank
-    @Size(min = 1, max = 25)
     private String reference;
 
     @NotBlank

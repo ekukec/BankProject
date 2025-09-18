@@ -1,10 +1,9 @@
-package com.emanuelkukec.mybank.web;
+package com.emanuelkukec.mybank.springboot.web;
 
-import com.emanuelkukec.mybank.dto.TransactionDto;
-import com.emanuelkukec.mybank.model.Transaction;
-import com.emanuelkukec.mybank.service.TransactionService;
+import com.emanuelkukec.mybank.springboot.dto.TransactionDto;
+import com.emanuelkukec.mybank.springboot.model.Transaction;
+import com.emanuelkukec.mybank.springboot.service.TransactionService;
 import jakarta.validation.Valid;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
