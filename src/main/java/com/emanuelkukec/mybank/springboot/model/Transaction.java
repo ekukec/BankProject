@@ -1,12 +1,17 @@
 package com.emanuelkukec.mybank.springboot.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+@Table("transactions")
 public class Transaction {
+    @Id
     private String id;
 
     private BigDecimal amount;
@@ -16,19 +21,20 @@ public class Transaction {
 
     private String reference;
 
-    private String bankSlogan;
+    private String slogan;
 
+    @Column("RECEIVING_USER")
     private String receivingUserId;
 
     public Transaction() {
     }
 
-    public Transaction(BigDecimal amount, ZonedDateTime timestamp, String reference, String bankSlogan, String receivingUserId) {
+    public Transaction(BigDecimal amount, ZonedDateTime timestamp, String reference, String slogan, String receivingUserId) {
         this.id = UUID.randomUUID().toString();
         this.amount = amount;
         this.timestamp = timestamp;
         this.reference = reference;
-        this.bankSlogan = bankSlogan;
+        this.slogan = slogan;
         this.receivingUserId = receivingUserId;
     }
 
@@ -64,12 +70,12 @@ public class Transaction {
         this.reference = reference;
     }
 
-    public String getBankSlogan() {
-        return bankSlogan;
+    public String getSlogan() {
+        return slogan;
     }
 
-    public void setBankSlogan(String bankSlogan) {
-        this.bankSlogan = bankSlogan;
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
     }
 
     public String getReceivingUserId() {

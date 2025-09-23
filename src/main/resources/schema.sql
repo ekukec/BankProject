@@ -1,4 +1,4 @@
-create table if not exists transactions
+create table if not exists "transactions"
 (
     id      uuid  default random_uuid() primary key,
     amount          DECIMAL(15, 4)  NOT NULL,

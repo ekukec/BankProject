@@ -4,10 +4,7 @@ import com.emanuelkukec.mybank.springboot.dto.TransactionDto;
 import com.emanuelkukec.mybank.springboot.model.Transaction;
 import com.emanuelkukec.mybank.springboot.service.TransactionService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,13 @@ public class BankController {
     }
 
     @GetMapping("/transactions")
-    public List<Transaction> transactions() {
+    public Iterable<Transaction> transactions() {
         return transactionService.findAll();
+    }
+
+    @GetMapping("/transactions/{userId}")
+    public Iterable<Transaction> transactions(@PathVariable String userId) {
+        return transactionService.findByReceivingUserId(userId);
     }
 
     @PostMapping("/transactions")
